@@ -4,13 +4,18 @@ const cors = require('cors');
 const connectDb = require('./config/db');
 const callRouter = require('./routes/callRoutes');
 const app = express();
+ 
+const { faker } = require("@faker-js/faker"); 
+const db = require('./config/firebase');
 
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({ origin: '*', credentials: true }));
 app.use(express.json());
 
-connectDb();
+// connectDb();
+
+
 app.use('/api', callRouter);
 
 app.get('/', (req, res) => {
